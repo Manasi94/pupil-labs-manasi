@@ -1,4 +1,4 @@
-How to download Cython on Linux:
+# How to download Cython on Linux:
 
 Cython requires C compiler 
 1. Install the dependencies:
@@ -7,7 +7,7 @@ sudo apt-get install build-essential
 python setup.py install
 3. If python setup tools are already resent on your system , try : pip install cython
 
-How to work with cython:
+## How to work with cython:
 
 1. Write your cython code and save that file as .pyx
 2. Create another file named setup.py
