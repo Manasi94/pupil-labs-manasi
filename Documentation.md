@@ -12,3 +12,9 @@ print t.timeit(number=5)
 
 ## Benchmarking:
 created a random 1000 points  whose distance need to be calculated from the ellipse.
+### Results of Benchmarking
+Time required for numpy
+0.0010199546814
+Time required for numexpr
+0.0524370670319
+
