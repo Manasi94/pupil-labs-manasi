@@ -25,3 +25,7 @@ Time required for numpy :
 Time required for numexpr:
 0.0524370670319
 
+##
+Time reuired for cython implementation:
+0.00037693977356
+
