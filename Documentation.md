@@ -20,15 +20,21 @@ Timeit Function is used to find the time required for the functions to evaluate 
 ##
 Time required for numpy :
 0.0010199546814
+On increasing the sample size to 1000 the time required for cython implementation was:
+0.00103092193604
+
 
 ##
 Time required for numexpr:
 0.0524370670319
+On increasing the sample size to 1000 the time required for cython implementation was:
+0.0629789829254
+
 
 ##
 Time reuired for cython implementation:
 0.00037693977356
-On increasing the sample sze to 1000 the timre required for cython implementation was:
+On increasing the sample size to 1000 the time required for cython implementation was:
 0.000943183898926
 
 ###Drivers control 
