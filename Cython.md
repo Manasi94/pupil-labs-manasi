@@ -25,3 +25,19 @@ python setup.py install
 1. While converting a code from python to cython remember to change functio from *def* to *cpdef*
 2. My complier kept craching near the function definition. Solution was to change the argumant name as the argument name was used in the function later and was undeclared earlier.
 
+
+####How to run the dist_pts_ellpise.pyx
+1. Build the dist_pts_ellipse file by typing the following in the terminal ```python setup.py build_ext --inplace```
+2. Open a python session and type the following code:
+
+```python
+>>>import numpy as np
+>>>from dist_pts_ellipse import dist_pts_ellipse
+>>>ellipse = ((0,0),(20,10),0)
+>>>pts = (np.random.rand(200,2))*10
+>>>from timeit import Timer
+>>>t = Timer(lambda: dist_pts_ellipse(ellipse,pts))
+>>>print "Time required for numpy"
+>>>print t.timeit(number=5)
+```
+
