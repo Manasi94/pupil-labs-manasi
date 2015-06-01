@@ -28,4 +28,31 @@ Time required for numexpr:
 ##
 Time reuired for cython implementation:
 0.00037693977356
+On increasing the sample sze to 1000 the timre required for cython implementation was:
+0.000943183898926
+
+###Drivers control 
+Example dict
+
+```python
+{
+'display_name': 'Auto Focus',
+'unit': 'input_terminal', <- This is either 'input_terminal' or 'processing_unit' which one can be found in cuvc.pxd
+,'control_id': uvc.UVC_CT_FOCUS_AUTO_CONTROL , <- you find this in libuvc.h 
+'bit_mask': 1<<17, <- you find this in cuvc.pxd
+'offset': 0 , <-- found in the attached file look at p81-p100
+'data_len': 1 , <- called size in the attache file same pages
+'buffer_len': 1, <- usually the same as data-len, except when a control has an offset, then a multiple.
+'min_val': 0, <- either defined in the attached file. (If the control supports a GET_MIN call this field is 'None')
+'max_val': 1, <- same as above, but GET_MAX
+'step':1, <- same as above, but GET_RES
+'def_val':None, <- same as above but GET_DEF
+'d_type': bool, <- either int, bool or a dict with menu entries.
+'doc': 'Enable the Auto Focus' <- short description of what the control does.
+}
+```
+
+####Doubts
+The min_val and max_val is not specified in certain cases. What should be done with them in particular?
+When the offset is a non zero value what should be the order followed for writing d_type?
 
