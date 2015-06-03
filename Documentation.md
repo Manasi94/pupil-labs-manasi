@@ -40,6 +40,11 @@ Time required for GetAnglesPolyline(implemented 10 times):0.000600099563599.
 
 Time required for cython implemetation :0.00056004524231
 
+###Cython implementation of prune_quick_combine function
+Time required for prune_quick_combine(10 times):0.00080394744873.
+
+Time required for cython implemetation :0.000550031661987.
+
 ###Drivers control 
 Example dict
 
