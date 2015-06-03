@@ -22,22 +22,27 @@ python setup.py install
 
 
 ###Errors I faced:
-1. While converting a code from python to cython remember to change functio from *def* to *cpdef*
-2. My complier kept craching near the function definition. Solution was to change the argumant name as the argument name was used in the function later and was undeclared earlier.
+1. While converting a code from python to cython remember to change function from *def* to *cpdef*
+2. My complier kept crashing near the function definition. Solution was to change the argument name as the argument name was used in the function later and was undeclared earlier.
 
+###Further notes about Cython
+1. Function Definition: There are two kinds of function definition in Cython. Python functions are defined using the def statement, as in Python. They take Python objects as parameters and return Python objects.
+C functions are defined using the new cdef statement. They take either Python objects or C values as parameters, and can return either Python objects or C values.
+Within a Cython module, Python functions and C functions can call each other freely, but only Python functions can be called from outside the module by interpreted Python code. So, any functions that you want to “export” from your Cython module must be declared as Python functions using def. There is also a hybrid function, called cpdef. A cpdef can be called from anywhere, but uses the faster C calling conventions when being called from other Cython code. 
+2. If no type is specified for a parameter or return value, it is assumed to be a Python object. (Note that this is different from the C convention, where it would default to int.).The name object can also be used to explicitly declare something as a Python object. 
 
 ####How to run the dist_pts_ellpise.pyx
 1. Build the dist_pts_ellipse file by typing the following in the terminal ```python setup.py build_ext --inplace```
 2. Open a python session and type the following code:
 
 ```python
->>>import numpy as np
->>>from dist_pts_ellipse import dist_pts_ellipse
->>>ellipse = ((0,0),(20,10),0)
->>>pts = (np.random.rand(200,2))*10
->>>from timeit import Timer
->>>t = Timer(lambda: dist_pts_ellipse(ellipse,pts))
->>>print "Time required for numpy"
->>>print t.timeit(number=5)
+import numpy as np
+from dist_pts_ellipse import dist_pts_ellipse
+ellipse = ((0,0),(20,10),0)
+pts = (np.random.rand(200,2))*10
+from timeit import Timer
+t = Timer(lambda: dist_pts_ellipse(ellipse,pts))
+print "Time required for numpy"
+print t.timeit(number=5)
 ```
 
