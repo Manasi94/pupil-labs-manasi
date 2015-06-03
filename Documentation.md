@@ -14,16 +14,14 @@ print t.timeit(number=5)
 
 ## Benchmarking:
 created a random 1000 points  whose distance need to be calculated from the ellipse.
+
 ### Results of Benchmarking
 
 Timeit Function is used to find the time required for the functions to evaluate the answer repeating if 5 times
 ##
+Time required for numpy :0.0010199546814
 
-
-Time required for numpy :
-0.0010199546814
-On increasing the sample size to 1000 the time required for cython implementation was:
-0.00103092193604
+On increasing the sample size to 1000 the time required for cython implementation was:0.00103092193604
 
 
 ##
@@ -37,8 +35,9 @@ Time required for cython implementation: 0.00037693977356
 
 On increasing the sample size to 1000 the time required for cython implementation was: 0.000943183898926
 
-##Cython IMplementation of GetAnglesPolyline
+##Cython Implementation of GetAnglesPolyline function
 Time required for GetAnglesPolyline(implemented 10 times):0.000600099563599.
+
 Time required for cython implemetation :0.00056004524231
 
 ###Drivers control 
