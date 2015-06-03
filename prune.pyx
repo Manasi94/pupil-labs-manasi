@@ -1,6 +1,6 @@
 import  numpy as np
 cimport numpy as np
-cpdef pruning_quick_combine(l,fn,seed_idx=None,max_evals=1e20,max_depth=5):
+def pruning_quick_combine(l,fn,seed_idx=None,max_evals=1e20):
     """
     l is a list of object to quick_combine.
     the evaluation fn should accept idecies to your list and the list
@@ -33,7 +33,7 @@ cpdef pruning_quick_combine(l,fn,seed_idx=None,max_evals=1e20,max_depth=5):
         max_evals -= 1
         # print '@idx',[mapping[i] for i in path]
         # print '@content',path
-        if not len(path) > max_depth:
+        if not len(path) > 5:
             # is this combination even viable, or did a subset fail already?
             if not any(m.issubset(set(path)) for m in prune):
                 #we have not tested this and a subset of this was sucessfull before
