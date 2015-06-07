@@ -15,35 +15,7 @@ print t.timeit(number=5)
 ## Benchmarking:
 created a random 1000 points  whose distance need to be calculated from the ellipse.
 
-### Results of Benchmarking
-
-Timeit Function is used to find the time required for the functions to evaluate the answer repeating if 5 times
-##
-Time required for numpy :0.0010199546814
-
-On increasing the sample size to 1000 the time required for cython implementation was:0.00103092193604
-
-
-##
-Time required for numexpr:0.0524370670319
-
-On increasing the sample size to 1000 the time required for cython implementation was: 0.0629789829254
-
-
-##
-Time required for cython implementation: 0.00037693977356
-
-On increasing the sample size to 1000 the time required for cython implementation was: 0.000943183898926
-
-##Cython Implementation of GetAnglesPolyline function
-Time required for GetAnglesPolyline(implemented 10 times):0.000600099563599.
-
-Time required for cython implemetation :0.00056004524231
-
-###Cython implementation of prune_quick_combine function
-Time required for prune_quick_combine(10 times):0.00080394744873.
-
-Time required for cython implemetation :0.000550031661987.
+repeating if 5 times
 
 ###Drivers control
 Example dict
@@ -70,13 +42,16 @@ Example dict
 The min_val and max_val is not specified in certain cases. What should be done with them in particular?
 When the offset is a non zero value what should be the order followed for writing d_type?
 
-<<<<<<< HEAD
+### Results of Benchmarking
+
+Timeit Function is used to find the time required for the functions to evaluate the answer
+
 
 | Dist_pts_ellipse 	| Sample size 200  	| Speedup 	| Sample size 1000  	| Speedup 	|
 |------------------	|------------------	|---------	|-------------------	|---------	|
 | Time for numpy   	| 0.0010199546814  	| 1       	| 0.00103092193604  	| 1       	|
 | Time for numexpr 	| 0.0524370670319  	| 0.019   	| 0.0629789829254   	| 0.0163  	|
-| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	| 1.093    	|
+| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	| 1.093     	|
 
 | GetAnglesPolyline 	| Implemented 10 times 	| Speedup 	|
 |-------------------	|----------------------	|---------	|
