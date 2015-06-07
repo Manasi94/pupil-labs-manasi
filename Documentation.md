@@ -76,14 +76,18 @@ When the offset is a non zero value what should be the order followed for writin
 |------------------	|------------------	|---------	|-------------------	|---------	|
 | Time for numpy   	| 0.0010199546814  	| 1       	| 0.00103092193604  	| 1       	|
 | Time for numexpr 	| 0.0524370670319  	| 0.019   	| 0.0629789829254   	| 0.0163  	|
-| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	|         	|
+| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	| 1.093    	|
 
-|**GetAnglesPolyline**   | **Implemented 10 times** | **Speedup** |
-|Time for python code    |  0.000600099563599       |     1       |
-|Time for cython         |  0.00056004524231        |    1.07     |
+| GetAnglesPolyline 	| Implemented 10 times 	| Speedup 	|
+|-------------------	|----------------------	|---------	|
+| Time for python   	| 0.000600099563599    	| 1       	|
+| Time for cython   	| 0.00056004524231     	| 1.07    	|
 
 
-|**prune_quick_combine**   |  **Implemented 10 times**  | **Speedup**  |
-| Time for python code     |  0.00080394744873.         |     1        |
-| Time for cython          |  0.000550031661987         |    1.46      |
+
+| prune_quick_combine	| Implemented 10 times 	| Speedup 	|
+|-------------------	|----------------------	|---------	|
+| Time for python   	| 0.00080394744873    	| 1       	|
+| Time for cython   	| 0.00055003166198     	| 1.46     	|
+
 =======
