@@ -45,14 +45,14 @@ Time required for prune_quick_combine(10 times):0.00080394744873.
 
 Time required for cython implemetation :0.000550031661987.
 
-###Drivers control 
+###Drivers control
 Example dict
 
 ```python
 {
 'display_name': 'Auto Focus',
 'unit': 'input_terminal', <- This is either 'input_terminal' or 'processing_unit' which one can be found in cuvc.pxd
-,'control_id': uvc.UVC_CT_FOCUS_AUTO_CONTROL , <- you find this in libuvc.h 
+,'control_id': uvc.UVC_CT_FOCUS_AUTO_CONTROL , <- you find this in libuvc.h
 'bit_mask': 1<<17, <- you find this in cuvc.pxd
 'offset': 0 , <-- found in the attached file look at p81-p100
 'data_len': 1 , <- called size in the attache file same pages
@@ -70,3 +70,17 @@ Example dict
 The min_val and max_val is not specified in certain cases. What should be done with them in particular?
 When the offset is a non zero value what should be the order followed for writing d_type?
 
+
+#### **Dist_pts_ellipse** |**Sample size 200** |**Speedup** |**Sample sie 1000** | **Speedup** |
+#### Time for numpy       | 0.0010199546814    |     1      | 0.00103092193604   |     1       |
+#### Time for numexpr     | 0.0524370670319    |   0.019    | 0.0629789829254    |    0.0163   |
+#### Time for cython      | 0.00037693977356   |   2.706    | 0.000943183898926  |    1.093    |
+
+#### **GetAnglesPolyline**   | **Implemented 10 times** | **Speedup** |
+#### Time for python code    |  0.000600099563599       |     1       |
+#### Time for cython         |  0.00056004524231        |    1.07     |
+
+
+#### **prune_quick_combine**   |  **Implemented 10 times**  | **Speedup**  |
+#### Time for python code      |  0.00080394744873.         |     1        |
+#### Time for cython           |  0.000550031661987         |    1.46      |
