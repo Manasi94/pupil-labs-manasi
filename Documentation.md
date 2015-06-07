@@ -70,6 +70,7 @@ Example dict
 The min_val and max_val is not specified in certain cases. What should be done with them in particular?
 When the offset is a non zero value what should be the order followed for writing d_type?
 
+<<<<<<< HEAD
 
 | Dist_pts_ellipse 	| Sample size 200  	| Speedup 	| Sample size 1000  	| Speedup 	|
 |------------------	|------------------	|---------	|-------------------	|---------	|
@@ -85,3 +86,4 @@ When the offset is a non zero value what should be the order followed for writin
 |**prune_quick_combine**   |  **Implemented 10 times**  | **Speedup**  |
 | Time for python code     |  0.00080394744873.         |     1        |
 | Time for cython          |  0.000550031661987         |    1.46      |
+=======
