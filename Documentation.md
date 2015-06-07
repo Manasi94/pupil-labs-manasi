@@ -70,17 +70,3 @@ Example dict
 The min_val and max_val is not specified in certain cases. What should be done with them in particular?
 When the offset is a non zero value what should be the order followed for writing d_type?
 
-
-#### **Dist_pts_ellipse**|**size200** |**spedup** |**size1000** | **Speedup** |
-#### Time for numpy      | 0.0010199  |     1     | 0.00103092  |     1       |
-#### Time for numexpr    | 0.0524370  |  0.019    |0.062978982  |    0.0163   |
-#### Time for cython     |0.00037693  |  2.706    | 0.00094318  |    1.093    |
-
-#### **GetAnglesPolyline**   | **Implemented 10 times** | **Speedup** |
-#### Time for python code    |  0.000600099563599       |     1       |
-#### Time for cython         |  0.00056004524231        |    1.07     |
-
-
-#### **prune_quick_combine**   |  **Implemented 10 times**  | **Speedup**  |
-#### Time for python code      |  0.00080394744873.         |     1        |
-#### Time for cython           |  0.000550031661987         |    1.46      |
