@@ -53,7 +53,6 @@ cpdef void filter(img, int min_w=10,int max_w=100):
     cdef int x_pos,y_pos,width
     cdef float response = 0
 
-
     for h in range(min_h,max_h,h_step):
       eye = make_eye(h)
       for i in range(0,img_size.r-eye.w,step):
@@ -70,3 +69,37 @@ cpdef void filter(img, int min_w=10,int max_w=100):
             best_pos = {i,j}
             #// printf("%i %i", (int)best_pos.r,(int)best_pos.c);
             best_h = eye.h
+
+
+    cdef point_t window_lower = {max(0,best_pos.r-step+1),max(0,best_pos.c-step+1)}
+    cdef point_t window_upper = {min(img_size.r,best_pos.r+step),min(img_size.c,best_pos.c+step)};
+    for h in range(best_h-h_step+1,best_h+h_step):
+            eye = make_eye(h)
+
+            for i in range(window_lower.r,min(window_upper.r,img_size.r-eye.w)) :
+                for j in range(window_lower.c,min(window_upper.c,img_size.c-eye.w)):
+
+                    # printf("|%2.0f",img[i * cols + j]);
+                    offset = {i,j}
+                    response =  eye.outer.f*area(img,img_size,eye.outer.s,eye.outer.e,offset)+eye.inner.f*area(img,img_size,eye.inner.s,eye.inner.e,offset);
+                    # ikiuprintf("| %5.2f ",response);
+                    if(response > best_response):
+                        #// printf("!");
+                        best_response = response
+                        best_pos = point_t(i,j)
+                        #// printf("%i %i", (int)best_pos.r,(int)best_pos.c);
+                        best_h = eye.h
+
+
+                #// printf("\n");
+
+
+
+    #// point_t start = {0,0};
+    #// point_t end = {1,1};
+    #// printf("FULL IMG SUM %1.0f\n",img[(img_size.r-1) * img_size.c + (img_size.c-1)] );
+    #// printf("AREA:%f\n",area(img,img_size,start,end,(point_t){0,0}));
+    x_pos = best_pos.r
+    y_pos = best_pos.c
+    width = best_h*3
+    response = best_response
