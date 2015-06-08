@@ -16,7 +16,7 @@ cdef struct eye_t:
     int h
 
 
-def area(const float *img,point_t size,point_t start,point_t end,point_t offset):
+cdef inline float area(img,point_t size,point_t start,point_t end,point_t offset):
     return    (img[(offset.r + end.r  ) * size.c + offset.c + end.c]+ img[(offset.r + start.r) * size.c + offset.c + start.c]- img[(offset.r + start.r) * size.c + offset.c + end.c]- img[(offset.r + end.r  ) * size.c + offset.c + start.c])
 
 cpdef eye_t make_eye(int h):
@@ -35,25 +35,29 @@ cpdef eye_t make_eye(int h):
     eye.w_half = w/2
     return eye
 
-cpdef void filter(const float *img, const int rows, const int cols, int * x_pos,int *y_pos,int *width, int min_w,int max_w,):
+cpdef void filter(img, int min_w=10,int max_w=100):
 
-    cdef point_t img_size = {rows,cols}
+    cdef point_t img_size
+    img_size.r  = img.shape[0]
+    img_size.c = img.shape[1]
     cdef int min_h = min_w/3
     cdef int max_h = max_w/3
     cdef int h, i, j
     cdef float best_response = -10000
-    cdef point_t best_pos = {0,0}
+    cdef point_t best_pos = point_t(0,0)
     cdef int best_h = 0
     cdef int h_step = 4
     cdef int step = 5
     cdef eye_t eye
     cdef point_t offset
-    cdef float a,b,c,d
+    cdef int x_pos,y_pos,width
+    cdef float response = 0
+
 
     for h in range(min_h,max_h,h_step):
       eye = make_eye(h)
-      for i in range(0,rows-eye.w,step):
-        for j in range(0,cols-eye.w,step):
+      for i in range(0,img_size.r-eye.w,step):
+        for j in range(0,img_size.c-eye.w,step):
           #// printf("|%2.0f",img[w,step):
           #// printf("|%2.0f",img[i * cols + j]);
           offset = {i,j}
