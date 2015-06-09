@@ -1,7 +1,8 @@
 import numpy as np
 from dist_pts_ellipse import dist_pts_ellipse
 ellipse = ((0,0),(20,10),0)
-pts =(np.random.rand(200,2))*10
+pts =np.array((np.random.rand(200,2))*10)
+#print dist_pts_ellipse(ellipse,pts)
 from timeit import Timer
 t = Timer(lambda: dist_pts_ellipse(ellipse,pts))
 print "Time required for cython"
