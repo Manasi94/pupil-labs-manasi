@@ -22,10 +22,10 @@ cdef struct eye_t:
 
 
 cpdef float area(np.ndarray[np.float32_t, ndim=2] img,point_t size,point_t start,point_t end,point_t offset):
-  return    img[(offset.r + end.r  ) * size.c + offset.c + end.c]\
-        + img[(offset.r + start.r) * size.c + offset.c + start.c]\
-        - img[(offset.r + start.r) * size.c + offset.c + end.c]\
-        - img[(offset.r + end.r  ) * size.c + offset.c + start.c]
+  return    img[offset.r + end.r ,offset.c + end.c]\
+        + img[offset.r + start.r, offset.c + start.c]\
+        - img[offset.r + start.r, offset.c + end.c]\
+        - img[offset.r + end.r,offset.c + start.c]
 #    return    (img[(offset.r + end.r) * size.c + offset.c + end.c] + img[(offset.r + start.r) * size.c + offset.c + start.c] - img[(offset.r + start.r) * size.c + offset.c + end.c]- img[(offset.r + end.r  ) * size.c + offset.c + start.c])
 
 cpdef eye_t make_eye(int h):
@@ -68,9 +68,12 @@ cpdef fil(np.ndarray[np.float32_t, ndim=2] img, int min_w=10,int max_w=100):
           #// printf("|%2.0f",img[w,step):
           #// printf("|%2.0f",img[i * cols + j]);
           offset = point_t(i,j)
-
+        #   print "i"
+        #   print i
+        #   print "j"
+        #   print j
           response = eye.outer.f*area(img,img_size,eye.outer.s,eye.outer.e,offset)+eye.inner.f*area(img,img_size,eye.inner.s,eye.inner.e,offset)
-          print response
+
           if(response  > best_response):
             #// printf("!");
             best_response = response
@@ -79,8 +82,8 @@ cpdef fil(np.ndarray[np.float32_t, ndim=2] img, int min_w=10,int max_w=100):
             best_h = eye.h
 
 
-    cdef point_t window_lower = {max(0,best_pos.r-step+1),max(0,best_pos.c-step+1)}
-    cdef point_t window_upper = {min(img_size.r,best_pos.r+step),min(img_size.c,best_pos.c+step)}
+    cdef point_t window_lower = point_t(max(0,best_pos.r-step+1),max(0,best_pos.c-step+1))
+    cdef point_t window_upper = point_t(min(img_size.r,best_pos.r+step),min(img_size.c,best_pos.c+step))
     for h in range(best_h-h_step+1,best_h+h_step):
             eye = make_eye(h)
 
