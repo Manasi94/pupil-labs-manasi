@@ -48,3 +48,8 @@ t = Timer(lambda: dist_pts_ellipse(ellipse,pts))
 print "Time required for numpy"
 print t.timeit(number=5)
 ```
+
+
+####Errors while writing dist_pts_ellipse
+1. I had given the data type of the returned value of the function in the function definition itself. That throwed an error
+2.  The dot product of pts and M_rot was modified since initially it showed error. Changed the syntax to this : ```python pts = pts.dot(M_rot) ```
