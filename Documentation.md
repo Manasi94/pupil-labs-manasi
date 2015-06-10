@@ -66,3 +66,10 @@ Timeit Function is used to find the time required for the functions to evaluate 
 | Time for cython   	| 0.00055003166198     	| 1.46     	|
 
 =======
+### Filter function
+1. The implementation of the filter function in cython is in the file filter.pyx .
+2. Changed the arguments of area function to np.ndarray[np.float32_t, ndim=2] img .
+
+####Errors
+1. The dimensions of the input array were not matching when i used the syntax np.float32_t(:,:). Changed the syntax to : ```python np.ndarray[np.float32_t, ndim=2] img```
+2. Exception IndexError: 'index 6834 is out of bounds for axis 0 with size 101' in 'filter.area' ignored. Still unable to resolve
