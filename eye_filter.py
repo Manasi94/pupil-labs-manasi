@@ -1,5 +1,5 @@
 from numpy.ctypeslib import ndpointer
-from fill import fil
+from filter import fil
 
 
 #def eye_filter(integral,min_w=10,max_w=100):
@@ -21,4 +21,5 @@ if __name__ == '__main__':
     # print img
     integral = cv2.integral(img)
     integral =  np.array(integral,dtype=np.float32)
+    #print integral.shape
     print fil(integral)
