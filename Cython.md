@@ -33,7 +33,7 @@ Within a Cython module, Python functions and C functions can call each other fre
 
 ####Cython errors and how to fix them
 1. Define all the variables before using them using cdef.(if type know their type)
-2. while giving a type to an array using numpy use : numpy.type_t : example: numpy.float32_t
+2. While giving a type to an array using numpy use : numpy.type_t : example: numpy.float32_t
 ####How to run the dist_pts_ellpise.pyx
 1. Build the dist_pts_ellipse file by typing the following in the terminal ```python setup.py build_ext --inplace```
 2. Open a python session and type the following code:
