@@ -1,5 +1,7 @@
 import numpy as np
 cimport numpy as np
+#from sklearn.utils.extmath import fast_dot
+
 DTYPE = np.float64
 ctypedef np.float_t DTYPE_t
 cpdef dist_pts_ellipse(object ellipse, np.ndarray pts):
@@ -16,10 +18,10 @@ cpdef dist_pts_ellipse(object ellipse, np.ndarray pts):
     cdef np.ndarray norm_mag, norm_dist,ratio,scaled_error,real_error,error_mag
 
     pts = pts - np.array((ex,ey)) # move pts to ellipse appears at origin , with this we copy data -deliberatly!
-    #
+
     M_rot = np.array([[np.cos(angle),-np.sin(angle)],[np.sin(angle),np.cos(angle)]])
 
-    pts = pts.dot(M_rot) #rotate so that ellipse axis align with coordinate system
+    pts = pts.dot(M_rot)#fast_dot(pts, M_rot)# #rotate so that ellipse axis align with coordinate system
 
      #print pts.shape
     pts /= (rx,ry)  #normalize such that ellipse radii=1
@@ -27,19 +29,15 @@ cpdef dist_pts_ellipse(object ellipse, np.ndarray pts):
     #
     # #print "normalize",pts
     norm_mag = np.sqrt((pts*pts).sum(axis=1))
-
     #
     norm_dist = np.abs(norm_mag-1) #distance of pt to ellipse in scaled space
-
     #
     ratio = (norm_dist)/norm_mag #scale factor to make the pts represent their dist to ellipse
-
     #
     scaled_error = np.transpose(pts.T*ratio) # per vector scalar multiplication: makeing sure that boradcasting is done right
 
     real_error = scaled_error*np.array((rx,ry))
 
-    #
     # print "Bye"
     error_mag = np.sqrt((real_error*real_error).sum(axis=1))
     return error_mag
