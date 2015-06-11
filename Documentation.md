@@ -80,6 +80,8 @@ Timeit Function is used to find the time required for the functions to evaluate 
 ### Filter function
 1. The implementation of the filter function in cython is in the file filter.pyx .
 2. Changed the arguments of area function to np.ndarray[np.float32_t, ndim=2] img .
+3. To speed up the function changed the range() to xrange() in the for loops .
+4. Also used local variables to store values used in the iterative nested for loop instead for accessing the value every iteration. 
 
 ####Errors
 1. The dimensions of the input array were not matching when i used the syntax np.float32_t(:,:). Changed the syntax to : ```python np.ndarray[np.float32_t, ndim=2] img```
