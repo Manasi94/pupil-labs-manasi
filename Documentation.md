@@ -65,6 +65,12 @@ Timeit Function is used to find the time required for the functions to evaluate 
 | Time for python   	| 0.00080394744873    	| 1       	|
 | Time for cython   	| 0.00055003166198     	| 1.46     	|
 
+
+| filter            	| Implemented 5 times 	| Speedup 	|
+|-------------------	|----------------------	|---------	|
+| Time for c code    	| 0.0159230232239     	| 1       	|
+| Time for cython   	| 1.50398921967       	| 0.0106   	|
+
 =======
 
 ####Errors while writing dist_pts_ellipse
@@ -77,4 +83,5 @@ Timeit Function is used to find the time required for the functions to evaluate 
 
 ####Errors
 1. The dimensions of the input array were not matching when i used the syntax np.float32_t(:,:). Changed the syntax to : ```python np.ndarray[np.float32_t, ndim=2] img```
-2. Exception IndexError: 'index 6834 is out of bounds for axis 0 with size 101' in 'filter.area' ignored. Still unable to resolve
+2. Exception IndexError: 'index 6834 is out of bounds for axis 0 with size 101' in 'filter.area' ignored. The error was due to incorrect way of pointing to an element of an array. For C we considered a single dimensiom array
+so we needed to multiply the rows with the column size to go to the next rown. In cython however we are directly using 2D arrays so no need for the multiplication
