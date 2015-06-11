@@ -11,6 +11,9 @@ from filter import fil
 if __name__ == '__main__':
     import numpy as np
     import cv2
+    from timeit import Timer
+
+
     img = np.ones((1000,1000),dtype= np.uint8)
     # img = np.random.rand((100))
     # img = img.reshape(10,-1)
@@ -21,5 +24,8 @@ if __name__ == '__main__':
     # print img
     integral = cv2.integral(img)
     integral =  np.array(integral,dtype=np.float32)
-    #print integral.shape
+    #print integral.size
     print fil(integral)
+    t = Timer(lambda: fil(integral))
+    print "Time required for cython"
+    print t.timeit(number=5)
