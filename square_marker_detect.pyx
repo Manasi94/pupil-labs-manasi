@@ -17,13 +17,6 @@ from scipy.spatial.distance import pdist
 #because np.sqrt is slower when we do it on small arrays
 from math import sqrt
 
-def any(iterable):
-    for row in iterable:
-        for element in row:
-        # print element
-            if element:
-                return True
-    return False
 
 def get_close_markers(markers,centroids=None, min_distance=20):
     if centroids is None:
@@ -56,7 +49,6 @@ cdef tuple decode(np.ndarray square_img,int grid):
 
     # border is: first row - last row and  first column - last column
 
-    #print msg
     if msg[0::grid-1,:].any() or msg[:,0::grid-1].any():
         # logger.debug("This is not a valid marker: \n %s" %msg)
         return None
