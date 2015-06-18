@@ -76,7 +76,7 @@ Timeit Function is used to find the time required for the functions to evaluate 
 | square_marker_detect     	| Implemented 100 times 	| Speedup 	|
 |-------------------------	|-----------------------	|---------	|
 | Time for python code      | 3.27636003494         	| 1       	|
-| Time for cython code    	| 3.19378495216         	| 1.026   	|
+| Time for cython code    	| 3.0302028656          	| 1.081   	|
 
 =======
 
