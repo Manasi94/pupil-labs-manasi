@@ -38,15 +38,11 @@ def get_close_markers(markers,centroids=None, min_distance=20):
 
 
 cdef tuple decode(np.ndarray square_img,int grid):
-    # cv2.namedWindow('image', cv2.WINDOW_NORMAL)
-    # cv2.imshow('image',square_img)
-    #
     cdef int step,start, angle,msg_int
     step = square_img.shape[0]/grid
     start = step/2
     #look only at the center point of each grid cell
     msg = square_img[start::step,start::step]
-
     # border is: first row - last row and  first column - last column
 
     if msg[0::grid-1,:].any() or msg[:,0::grid-1].any():
@@ -56,7 +52,6 @@ cdef tuple decode(np.ndarray square_img,int grid):
     # strip border to get the message
 
     msg = msg[1:-1,1:-1]/255
-    # print "bye"
     # out first bit is encoded in the orientation corners of the marker:
     #               MSB = 0                   MSB = 1
     #               W|*|*|W   ^               B|*|*|B   ^
@@ -66,7 +61,6 @@ cdef tuple decode(np.ndarray square_img,int grid):
     # 0,0 -1,0 -1,-1, 0,-1
     # angles are counter-clockwise rotation
     corners = msg[0,0], msg[-1,0], msg[-1,-1], msg[0,-1]
-    # print corners
     if sum(corners) == 3:
         msg_int = 0
     elif sum(corners) ==1:
@@ -75,7 +69,6 @@ cdef tuple decode(np.ndarray square_img,int grid):
     else:
         #this is no valid marker but maybe a maldetected one? We return unknown marker with None rotation
         return None
-    # print "bye"
     #read rotation of marker by now we are guaranteed to have 3w and 1b
     #angle is number of 90deg rotations
     if corners == (0,1,1,1):
@@ -92,8 +85,6 @@ cdef tuple decode(np.ndarray square_img,int grid):
     #  W |LSB| W      ^
     #  1 | 2 | 3     / \ UP
     # MSB| 4 | W      |
-    # print angle
-    # print msg    #the message is displayed as you see in the image
 
 
     msg = msg.tolist()
@@ -131,7 +122,8 @@ cdef bint correct_gradient(unsigned char[:,::1] gray_img,r):
         return True
 
 
-def detect_markers(gray_img,grid_size,min_marker_perimeter=40,aperture=11,visualize=False):
+cdef list detect_markers(gray_img,grid_size,min_marker_perimeter=40,aperture=11,visualize=False):
+    cdef list markers
     edges = cv2.adaptiveThreshold(gray_img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, aperture, 9)
 
     contours, hierarchy = cv2.findContours(edges,
@@ -206,6 +198,7 @@ def detect_markers(gray_img,grid_size,min_marker_perimeter=40,aperture=11,visual
                     marker['img'] = np.rot90(otsu,-angle/90)
                 markers.append(marker)
 
+    #print markers
     return markers
 
 
