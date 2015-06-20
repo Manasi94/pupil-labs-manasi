@@ -39,7 +39,3 @@ if __name__ == '__main__':
     print "Time required for cython"
     print t.timeit(number=100)
     #
-    # gray_img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    # t = Timer(lambda: square_marker_detect.detect_markers_robust(gray_img,5,[],true_detect_every_frame=1))
-    # print "Time required for python"
-    # print t.timeit(number=100)
