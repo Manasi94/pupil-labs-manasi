@@ -122,7 +122,7 @@ cdef bint correct_gradient(unsigned char[:,::1] gray_img,r):
         return True
 
 
-cdef list detect_markers(gray_img,grid_size,min_marker_perimeter=40,aperture=11,visualize=False):
+cdef list detect_markers(np.ndarray gray_img,int grid_size,min_marker_perimeter=40,aperture=11,visualize=False):
     cdef list markers
     edges = cv2.adaptiveThreshold(gray_img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, aperture, 9)
 
@@ -157,6 +157,8 @@ cdef list detect_markers(gray_img,grid_size,min_marker_perimeter=40,aperture=11,
 
     markers = []
     size = 10*grid_size
+    # print size
+    # print grid_size
     #top left,bottom left, bottom right, top right in image
     mapped_space = np.array( ((0,0),(size,0),(size,size),(0,size)) ,dtype=np.float32).reshape(4,1,2)
     for r in rect_cand:
@@ -249,7 +251,7 @@ lk_params = dict( winSize  = (45, 45),
 prev_img = None
 tick = 0
 
-def detect_markers_robust(gray_img,grid_size,prev_markers,min_marker_perimeter=40,aperture=11,visualize=False,true_detect_every_frame = 1):
+def detect_markers_robust(np.ndarray gray_img,grid_size,prev_markers,min_marker_perimeter=40,aperture=11,visualize=False,true_detect_every_frame = 1):
     global prev_img
 
     global tick
