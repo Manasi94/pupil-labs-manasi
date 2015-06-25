@@ -53,3 +53,11 @@ print t.timeit(number=5)
 ####Errors while writing dist_pts_ellipse
 1. I had given the data type of the returned value of the function in the function definition itself. That throwed an error
 2.  The dot product of pts and M_rot was modified since initially it showed error. Changed the syntax to this : ```python pts = pts.dot(M_rot) ```
+
+
+####How to convert cython file to .html
+1. Go to the command line and type the following instructions:
+```terminal
+sudo cython -a square_marker_detect.pyx
+xdg-open square_marker_detect.html
+```

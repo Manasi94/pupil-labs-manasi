@@ -94,3 +94,8 @@ Timeit Function is used to find the time required for the functions to evaluate 
 1. The dimensions of the input array were not matching when i used the syntax np.float32_t(:,:). Changed the syntax to : ```python np.ndarray[np.float32_t, ndim=2] img```
 2. Exception IndexError: 'index 6834 is out of bounds for axis 0 with size 101' in 'filter.area' ignored. The error was due to incorrect way of pointing to an element of an array. For C we considered a single dimensiom array
 so we needed to multiply the rows with the column size to go to the next rown. In cython however we are directly using 2D arrays so no need for the multiplication
+
+####Cython code
+1. Using the -a switch to the cython command line program (or following a link from the Sage notebook) results in an HTML report of Cython code interleaved with the generated C code.
+2.Lines are colored according to the level of “typedness” – white lines translate to pure C, while lines that require the Python C-API are yellow (darker as they translate to more C-API interaction).
+3.Lines that translate to C code have a plus (+) in front and can be clicked to show the generated code.
