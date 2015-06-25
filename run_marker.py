@@ -7,15 +7,15 @@ from timeit import Timer
 
 
 
-def bench():
-    cap = cv2.VideoCapture('/home/manasi/Downloads/fiducial_markers.mkv')
-    status,img = cap.read()
-    markers = []
-    while status:
-        markers = square_marker_detect.detect_markers_robust( cv2.cvtColor(img,cv2.COLOR_BGR2GRAY),5,markers,true_detect_every_frame=1)
-        status,img = cap.read()
-        if markers:
-            return
+# def bench():
+#     cap = cv2.VideoCapture('/home/manasi/Downloads/fiducial_markers.mkv')
+#     status,img = cap.read()
+#     markers = []
+#     while status:
+#         markers = square_marker_detect.detect_markers_robust( cv2.cvtColor(img,cv2.COLOR_BGR2GRAY),5,markers,true_detect_every_frame=1)
+#         status,img = cap.read()
+#         if markers:
+#             return
 
 
 
