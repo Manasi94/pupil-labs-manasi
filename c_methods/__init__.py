@@ -29,6 +29,7 @@ else:
     # we are running in a normal Python environment
     basedir = os.path.dirname(__file__)
 
+
     ### Run Autocompiler
     #  Binaries are not distributed instead a make file and source are in the c-methods folder
     #  Make is invoked when this module is imported or run.
@@ -39,18 +40,19 @@ else:
     else:
         c_flags = "CFLAGS=-m32"
 
+
     from subprocess import check_output
     logger.debug("Compiling now.")
-    compiler_status = check_output(["make",c_flags])
+    compiler_status = check_output(["make",c_flags],cwd=basedir)
     logger.debug('Compiler status: %s'%compiler_status)
     del check_output
     logger.debug("Compiling done.")
+    dll_path = basedir + os.path.sep + 'methods.so'
 
-
-    dll_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'methods.so')
     ### C-Types binary loading
     if not os.path.isfile(dll_path):
         raise Exception("c-methods Error could not compile binary.")
+
 
 
 __methods_dll = CDLL(dll_path)
