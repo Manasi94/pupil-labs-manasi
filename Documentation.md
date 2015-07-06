@@ -51,7 +51,7 @@ Timeit Function is used to find the time required for the functions to evaluate 
 |------------------	|------------------	|---------	|-------------------	|---------	|
 | Time for numpy   	| 0.0010199546814  	| 1       	| 0.00103092193604  	| 1       	|
 | Time for numexpr 	| 0.0524370670319  	| 0.019   	| 0.0629789829254   	| 0.0163  	|
-| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	| 1.093     	|
+| Time for cython  	| 0.00037693977356 	| 2.706   	| 0.000943183898926 	| 1.093    	|
 
 | GetAnglesPolyline 	| Implemented 10 times 	| Speedup 	|
 |-------------------	|----------------------	|---------	|
@@ -66,10 +66,10 @@ Timeit Function is used to find the time required for the functions to evaluate 
 | Time for cython   	| 0.00055003166198     	| 1.46     	|
 
 
-| filter            	| Implemented 5 times 	| Speedup 	|
+| filter            	| Implemented 1000 times| Speedup 	|
 |-------------------	|----------------------	|---------	|
-| Time for c code    	| 0.0159230232239     	| 1       	|
-| Time for cython   	| 1.50398921967       	| 0.0106   	|
+| Time for ctypes    	| 0.989124059677     	  | 1       	|
+| Time for cython   	| 0.459467887878       	| 2.153    	|
 
 
 
