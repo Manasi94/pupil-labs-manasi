@@ -1,5 +1,5 @@
 from numpy.ctypeslib import ndpointer
-from filter import fil
+from filter_par import fil
 
 
 #def eye_filter(integral,min_w=10,max_w=100):
