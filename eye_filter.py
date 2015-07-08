@@ -1,3 +1,4 @@
+# import pyximport; pyximport.install()
 from numpy.ctypeslib import ndpointer
 from filter_par import fil
 
@@ -12,7 +13,6 @@ if __name__ == '__main__':
     import numpy as np
     import cv2
     from timeit import Timer
-
     from c_methods import eye_filter
 
     img = np.ones((640,480),dtype= np.uint8)
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     img = np.array(img,dtype = np.uint8)
     # img +=20
     img[50:52,100:102] = 0
-    # print img
+    #print img
     integral = cv2.integral(img)
     # integrabbl =  np.array(integral,dtype=np.float32)
     #print integral.size
