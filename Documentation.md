@@ -99,3 +99,18 @@ so we needed to multiply the rows with the column size to go to the next rown. I
 1. Using the -a switch to the cython command line program (or following a link from the Sage notebook) results in an HTML report of Cython code interleaved with the generated C code.
 2.Lines are colored according to the level of “typedness” – white lines translate to pure C, while lines that require the Python C-API are yellow (darker as they translate to more C-API interaction).
 3.Lines that translate to C code have a plus (+) in front and can be clicked to show the generated code.
+
+
+####Profiling
+
+1. Go to command line and type the following commands
+```python
+python -m cProfile -o profile.pstats main.py
+gprof2dot -f pstats profile.pstats | dot -Tngg -o main.png
+```
+2. A main.png file will be created in your folder.Open it.
+3. It has a graph of the profiling
+4. If graph2dot is not installed use the foloowing command:
+```
+sudo pip install gprof2dot
+```
