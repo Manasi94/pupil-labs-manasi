@@ -78,6 +78,14 @@ Timeit Function is used to find the time required for the functions to evaluate 
 | Time for python code      | 3.27636003494         	| 1       	|
 | Time for cython code    	| 2.98566699028         	| 1.097   	|
 
+
+
+| Profiling          	| Prune_quick_combine   | Ellipse_eval|
+|-------------------	|----------------------	|-----------	|
+| Original          	| 7.67%             	  | 6.48%    	  |
+| Using prune cython 	| 6.08%               	| 5.47%    	  |
+|Cython ellipse_eval 	| 5.32%               	| 4.80%    	  |
+
 =======
 
 ####Errors while writing dist_pts_ellipse
@@ -106,7 +114,7 @@ so we needed to multiply the rows with the column size to go to the next rown. I
 1. Go to command line and type the following commands
 ```python
 python -m cProfile -o profile.pstats main.py
-gprof2dot -f pstats profile.pstats | dot -Tngg -o main.png
+gprof2dot -f pstats profile.pstats | dot -Tpng -o main.png
 ```
 2. A main.png file will be created in your folder.Open it.
 3. It has a graph of the profiling
