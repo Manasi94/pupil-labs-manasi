@@ -1,6 +1,6 @@
 import  numpy as np
 cimport numpy as np
-def pruning_quick_combine(l,fn,seed_idx=None,max_evals=1e20):
+def pruning_quick_combine(l,fn,seed_idx=None,max_evals=1e20,max_depth=5):
     """
     l is a list of object to quick_combine.
     the evaluation fn should accept idecies to your list and the list
