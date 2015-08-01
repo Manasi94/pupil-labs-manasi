@@ -125,7 +125,7 @@ sudo pip install gprof2dot
 
 
 
-###Reults of profiling
+###Results of profiling
 1. The eye0_cpu_time_original.png corresponds to the profiling results of the program as it is.
 2. The eye0_cpu_time_prune.png corresponds to the profiling results of the program when cython implementation of Pruning quick combine was used.
 3.  The eye0_cpu_time.png corresponds to the profiling results of the program when cython implementation of ellipse_eval was used.
