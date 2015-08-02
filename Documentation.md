@@ -80,11 +80,11 @@ Timeit Function is used to find the time required for the functions to evaluate 
 
 
 
-| Profiling          	| Prune_quick_combine   | Ellipse_eval|
-|-------------------	|----------------------	|-----------	|
-| Original          	| 7.67%             	  | 6.48%    	  |
-| Using prune cython 	| 6.08%               	| 5.47%    	  |
-|Cython ellipse_eval 	| 5.32%               	| 4.80%    	  |
+| Profiling          	| Prune_quick_combine   | Speedup 	|Ellipse_eval | Speedup 	|
+|-------------------	|----------------------	|---------	|-----------	|---------	|
+| Original          	| 7.67%             	  | 1       	| 6.48%    	  | 1       	|
+| Using prune cython 	| 6.08%               	| 1.26     	| 5.47%    	  | 1.185    	|
+|Cython ellipse_eval 	| 5.32%               	| 1.44     	| 4.80%    	  | 1.35     	|
 
 =======
 
